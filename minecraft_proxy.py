@@ -19,7 +19,7 @@ class PacketBridge(Bridge):
 
         if direction == "downstream":
             self.downstream.send_packet(name, buff.read())
-        else:
+        elif direction == "upstream":
             self.upstream.send_packet(name, buff.read())
 
     # def packet_upstream_player_position(self, buff):
@@ -36,7 +36,7 @@ def main(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument("-a", "--listen-host", default="127.0.0.1", help="address to listen on")
     parser.add_argument("-p", "--listen-port", default=12345, type=int, help="port to listen on")
-    parser.add_argument("-b", "--connect-host", default="0.0.0.0", help="address to connect to")
+    parser.add_argument("-b", "--connect-host", default="192.168.2.10", help="address to connect to")
     parser.add_argument("-q", "--connect-port", default=25565, type=int, help="port to connect to")
     args = parser.parse_args(argv)
 
