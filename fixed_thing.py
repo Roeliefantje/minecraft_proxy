@@ -139,7 +139,7 @@ class MyBridge(Bridge):
 
         # follow: https://kqzz.github.io/mc-bearer-token/
 
-        accessToken = 'eyJhbGciOiJIUzI1NiJ9.eyJ4dWlkIjoiMjUzNTQwNTYyNTM4NzUxNiIsImFnZyI6IkFkdWx0Iiwic3ViIjoiOTEzYTY3MWUtYjk2NC00YzRkLTk5MmUtYmRjYTk2MjE1MGZmIiwibmJmIjoxNjcwNDQ1MjEzLCJhdXRoIjoiWEJPWCIsInJvbGVzIjpbXSwiaXNzIjoiYXV0aGVudGljYXRpb24iLCJleHAiOjE2NzA1MzE2MTMsImlhdCI6MTY3MDQ0NTIxMywicGxhdGZvcm0iOiJVTktOT1dOIiwieXVpZCI6IjRhOGM4N2EyODM5NzkyYTllZDBiNGRiMmZmYTViODI2In0.tS-7ZsGzB5qIju5wRdWHQkZ51gJreB84TyWqts8HotE'
+        accessToken = 'EXPORT_TOKEN'
 
         url = "https://api.minecraftservices.com/minecraft/profile"
         headers = {'Authorization': 'Bearer ' + accessToken}

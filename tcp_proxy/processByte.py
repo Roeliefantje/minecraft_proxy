@@ -14,6 +14,17 @@ class ByteProcessor:
     # We also need to decrypt the token and encrypt it using the server public key, as only then will the server
     # ack the handshake.
 
+
+    # After this the server and client need to make a request to sessionserver.mojang.com
+    # But the hashes will not match, as the client uses our public key instead of that of the server,
+    # So we probably have to send a get request ourselves as well, this way the server will send a Login Success packet.
+
+    # If we make the client send an invalid packet with our public key, I dont know what happens, but maybe it unvalidates the connection,
+    # In this case, we could make the client ocnnect to us generating our own server id, and then connect to the server and send another request packet.
+    # As far as I am aware, you can be online on two servers at once, so this shouldn't bring problems.
+
+    # https://wiki.vg/Protocol_Encryption
+
     def __init__(self):
         self.queue = []
         self.state = "handshake"
