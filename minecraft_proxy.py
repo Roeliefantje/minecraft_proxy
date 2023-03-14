@@ -13,7 +13,7 @@ class PacketBridge(Bridge):
             self.verbose = not self.verbose
             buff.discard()
         else:
-            buff.restore
+            buff.restore()
             self.upstream.send_packet("chat_command", buff.read())
 
     def packet_unhandled(self, buff, direction, name):
