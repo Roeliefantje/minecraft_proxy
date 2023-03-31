@@ -5,13 +5,16 @@ from twisted.internet import reactor
 class PacketBridge(Bridge):
     verbose = False
 
-    def packet_upstream_chat_message(self, buff):
+    def packet_upstream_chat_command(self, buff):
+        buff.save()
         message = buff.unpack_string()
 
-        if message.startswith("/verbose"):
+        if message == "verbose":
             self.verbose = not self.verbose
+            buff.discard()
         else:
-            self.upstream.send_packet("chat_message", buff.read())
+            buff.restore()
+            self.upstream.send_packet("chat_command", buff.read())
 
     def packet_unhandled(self, buff, direction, name):
         if self.verbose:
@@ -42,7 +45,7 @@ def main(argv):
 
     factory = QuietDownStreamFactory()
     factory.connect_host = args.connect_host
-    factory.connect_porty = args.connect_port
+    factory.connect_port = args.connect_port
 
     factory.listen(args.listen_host, args.listen_port)
     reactor.run()
